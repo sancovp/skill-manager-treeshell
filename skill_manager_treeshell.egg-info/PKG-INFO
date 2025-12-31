@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: skill-manager-treeshell
-Version: 0.1.1
+Version: 0.1.3
 Summary: Skill Manager TreeShell MCP - Three-tier skill architecture for compound intelligence
 Author: TreeShell Developer
 Author-email: Isaac Wright <sancovp@gmail.com>
@@ -19,7 +19,7 @@ Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: heaven-tree-repl>=0.1.0
-Requires-Dist: skill-manager-mcp>=0.1.0
+Requires-Dist: skill-manager-mcp>=0.1.2
 Requires-Dist: mcp>=1.0.0
 Dynamic: author
 Dynamic: license-file

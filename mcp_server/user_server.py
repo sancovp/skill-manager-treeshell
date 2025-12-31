@@ -73,6 +73,21 @@ async def serve() -> None:
                 name=TreeShellTools.RUN_CONVERSATION_SHELL.value,
                 description="""Skill Manager - Three-tier skill architecture: global catalog, equipped state, skillsets.
 
+## What is a Skill?
+A skill is a PACKAGE (directory) containing:
+- SKILL.md: Main content with instructions/context (frontmatter + body)
+- scripts/: Executable scripts the agent can run
+- templates/: Template files for generation
+- reference.md: Additional reference material
+
+Use get_skill(name) to read a skill and see its available resources.
+
+## Skill Categories
+Skills have a category that tells you how to use them:
+- **understand**: Pure context, no flight. Read and absorb, then apply as you work.
+- **preflight**: Primes you with concepts, points to fly() domain or specific flights. Read, then browse/start flights.
+- **single_turn_process**: Context + immediate action. Read and do it now, no flight needed.
+
 Actions (coordinate | name):
 
 === Global Catalog ===
@@ -83,7 +98,7 @@ Actions (coordinate | name):
 0.1.4 | get_skill - Get full content of a skill.
   Args: name (str)
 0.1.5 | create_skill - Create a skill in global catalog.
-  Args: name (str), domain (str), content (str), description (str), subdomain (str, optional)
+  Args: name (str), domain (str), content (str), description (str), subdomain (str, optional), category (str, optional: understand|preflight|single_turn_process)
 0.1.6 | search_skills - Search skills and skillsets using RAG.
   Args: query (str), n_results (int, optional)
 
