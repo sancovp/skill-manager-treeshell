@@ -99,8 +99,8 @@ Actions (coordinate | name):
   Args: name (str)
 0.1.5 | create_skill - Create a skill in global catalog.
   Args: name (str), domain (str), content (str), description (str), subdomain (str, optional), category (str, optional: understand|preflight|single_turn_process)
-0.1.6 | search_skills - Search skills and skillsets using RAG.
-  Args: query (str), n_results (int, optional)
+0.1.6 | search_skills - Search skills using RAG, optionally filtered by category.
+  Args: query (str), n_results (int, optional), category (str, optional: understand|preflight|single_turn_process)
 
 === Equipped State ===
 0.1.7 | list_equipped - List currently equipped skills.
