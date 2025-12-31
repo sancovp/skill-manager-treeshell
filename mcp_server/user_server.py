@@ -84,9 +84,9 @@ Use get_skill(name) to read a skill and see its available resources.
 
 ## Skill Categories
 Skills have a category that tells you how to use them:
-- **understand**: Pure context, no flight. Read and absorb, then apply as you work.
-- **preflight**: Primes you with concepts, points to fly() domain or specific flights. Read, then browse/start flights.
-- **single_turn_process**: Context + immediate action. Read and do it now, no flight needed.
+- **understand**: For TALKING. Reminds you of key concepts or how to retrieve them for a domain.
+- **preflight**: For WORKING. Primes you for a task, points to fly() domain or specific flights.
+- **single_turn_process**: For WORKING. Context + immediate action. Do it now in one turn.
 
 Actions (coordinate | name):
 
