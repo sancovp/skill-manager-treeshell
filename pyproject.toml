@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skill-manager-treeshell"
-version = "0.1.5"
+version = "0.1.6"
 description = "Skill Manager TreeShell MCP - Three-tier skill architecture for compound intelligence"
 readme = "README.md"
 license = "LicenseRef-GPBL-1.0"
@@ -32,10 +32,10 @@ Repository = "https://github.com/sancovp/skill-manager-treeshell"
 Issues = "https://github.com/sancovp/skill-manager-treeshell/issues"
 
 [project.scripts]
-skill-manager-treeshell = "mcp_server.user_server:serve"
+skill-manager-treeshell = "skillmanager_treeshell.mcp_server.user_server:serve"
 
 [tool.setuptools.packages.find]
-include = ["skillmanager_treeshell*", "mcp_server*", "configs*", "families*"]
+include = ["skillmanager_treeshell*", "configs*", "families*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.json"]

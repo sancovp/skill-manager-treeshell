@@ -1,2 +1,2 @@
 [console_scripts]
-skill-manager-treeshell = mcp_server.user_server:serve
+skill-manager-treeshell = skillmanager_treeshell.mcp_server.user_server:serve
