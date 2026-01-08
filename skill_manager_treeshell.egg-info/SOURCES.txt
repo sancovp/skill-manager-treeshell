@@ -21,7 +21,9 @@ configs/system_base_zone_config.json
 configs/system_user_config.json
 configs/system_user_shortcuts.json
 configs/system_user_zone_config.json
+configs/families/system_dashboard_family.json
 configs/families/system_family.json
+configs/families/system_hud_family.json
 configs/families/system_meta_family.json
 skill_manager_treeshell.egg-info/PKG-INFO
 skill_manager_treeshell.egg-info/SOURCES.txt
@@ -30,6 +32,7 @@ skill_manager_treeshell.egg-info/entry_points.txt
 skill_manager_treeshell.egg-info/requires.txt
 skill_manager_treeshell.egg-info/top_level.txt
 skillmanager_treeshell/__init__.py
+skillmanager_treeshell/dashboard_operations.py
 skillmanager_treeshell/mcp_server/__init__.py
 skillmanager_treeshell/mcp_server/agent_server.py
 skillmanager_treeshell/mcp_server/user_server.py
