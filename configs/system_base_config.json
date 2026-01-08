@@ -1,8 +1,8 @@
 {
-  "app_id": "base_treeshell",
-  "domain": "system",
+  "app_id": "skillmanager_treeshell",
+  "domain": "skill_manager",
   "role": "assistant",
-  "about_app": "Base TreeShell system configuration",
-  "about_domain": "Core system operations and management",
+  "about_app": "Skill Manager TreeShell",
+  "about_domain": "Three-tier skill architecture management",
   "system_family": "system"
 }
