@@ -16,7 +16,7 @@ def _save_dashboard(data):
     DASHBOARD_FILE.write_text(json.dumps(data, indent=2))
 
 # === FAVORITE SKILLS ===
-def _dashboard_fav_skills_list(shell) -> str:
+def _dashboard_fav_skills_list() -> str:
     data = _load_dashboard()
     favs = data.get("favorite_skills", {})
     if not favs:
@@ -28,7 +28,7 @@ def _dashboard_fav_skills_list(shell) -> str:
             result += f"  - {s}\n"
     return result
 
-def _dashboard_fav_skills_add(shell, skill_name: str, category: str = "general") -> str:
+def _dashboard_fav_skills_add(skill_name: str, category: str = "general") -> str:
     data = _load_dashboard()
     if category not in data["favorite_skills"]:
         data["favorite_skills"][category] = []
@@ -38,7 +38,7 @@ def _dashboard_fav_skills_add(shell, skill_name: str, category: str = "general")
         return f"Added '{skill_name}' to favorites under '{category}'"
     return f"'{skill_name}' already in favorites"
 
-def _dashboard_fav_skills_remove(shell, skill_name: str) -> str:
+def _dashboard_fav_skills_remove(skill_name: str) -> str:
     data = _load_dashboard()
     for cat, skills in data["favorite_skills"].items():
         if skill_name in skills:
@@ -48,14 +48,14 @@ def _dashboard_fav_skills_remove(shell, skill_name: str) -> str:
     return f"'{skill_name}' not found in favorites"
 
 # === FAVORITE PERSONAS ===
-def _dashboard_fav_personas_list(shell) -> str:
+def _dashboard_fav_personas_list() -> str:
     data = _load_dashboard()
     favs = data.get("favorite_personas", [])
     if not favs:
         return "No favorite personas yet."
     return "=== Favorite Personas ===\n" + "\n".join(f"  - {p}" for p in favs)
 
-def _dashboard_fav_personas_add(shell, persona_name: str) -> str:
+def _dashboard_fav_personas_add(persona_name: str) -> str:
     data = _load_dashboard()
     if persona_name not in data["favorite_personas"]:
         data["favorite_personas"].append(persona_name)
@@ -63,7 +63,7 @@ def _dashboard_fav_personas_add(shell, persona_name: str) -> str:
         return f"Added '{persona_name}' to favorite personas"
     return f"'{persona_name}' already in favorites"
 
-def _dashboard_fav_personas_remove(shell, persona_name: str) -> str:
+def _dashboard_fav_personas_remove(persona_name: str) -> str:
     data = _load_dashboard()
     if persona_name in data["favorite_personas"]:
         data["favorite_personas"].remove(persona_name)
@@ -72,14 +72,14 @@ def _dashboard_fav_personas_remove(shell, persona_name: str) -> str:
     return f"'{persona_name}' not found"
 
 # === RECENTS ===
-def _dashboard_recently_made(shell, limit: int = 10) -> str:
+def _dashboard_recently_made(limit: int = 10) -> str:
     data = _load_dashboard()
     recents = data.get("recently_made", [])[-limit:]
     if not recents:
         return "No recently made skills tracked."
     return "=== Recently Made ===\n" + "\n".join(f"  - {r['name']} ({r['time']})" for r in recents)
 
-def _dashboard_recently_equipped(shell, limit: int = 10) -> str:
+def _dashboard_recently_equipped(limit: int = 10) -> str:
     data = _load_dashboard()
     recents = data.get("recently_equipped", [])[-limit:]
     if not recents:
@@ -99,14 +99,14 @@ def track_equipped(name: str):
     _save_dashboard(data)
 
 # === ISSUES ===
-def _dashboard_create_issue(shell, title: str, body: str, tags: str = "") -> str:
+def _dashboard_create_issue(title: str, body: str, tags: str = "") -> str:
     data = _load_dashboard()
     issue = {"id": f"issue_{len(data['issues'])+1}", "title": title, "body": body, "tags": tags.split(",") if tags else [], "created": datetime.now().isoformat()}
     data["issues"].append(issue)
     _save_dashboard(data)
     return f"Created issue: {issue['id']} - {title}"
 
-def _dashboard_review_issues(shell, issue_id: str = "") -> str:
+def _dashboard_review_issues(issue_id: str = "") -> str:
     data = _load_dashboard()
     issues = data.get("issues", [])
     if not issues:
