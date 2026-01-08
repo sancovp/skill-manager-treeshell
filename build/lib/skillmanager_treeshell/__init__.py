@@ -34,3 +34,21 @@ class SkillManagerTreeShell(TreeShell):
                 final_config['nav_config'] = json.load(f)
 
         super().__init__(final_config)
+
+        # Register dashboard functions
+        from .dashboard_operations import (
+            _dashboard_fav_skills_list, _dashboard_fav_skills_add, _dashboard_fav_skills_remove,
+            _dashboard_fav_personas_list, _dashboard_fav_personas_add, _dashboard_fav_personas_remove,
+            _dashboard_recently_made, _dashboard_recently_equipped,
+            _dashboard_create_issue, _dashboard_review_issues
+        )
+        self.register_function("_dashboard_fav_skills_list", _dashboard_fav_skills_list)
+        self.register_function("_dashboard_fav_skills_add", _dashboard_fav_skills_add)
+        self.register_function("_dashboard_fav_skills_remove", _dashboard_fav_skills_remove)
+        self.register_function("_dashboard_fav_personas_list", _dashboard_fav_personas_list)
+        self.register_function("_dashboard_fav_personas_add", _dashboard_fav_personas_add)
+        self.register_function("_dashboard_fav_personas_remove", _dashboard_fav_personas_remove)
+        self.register_function("_dashboard_recently_made", _dashboard_recently_made)
+        self.register_function("_dashboard_recently_equipped", _dashboard_recently_equipped)
+        self.register_function("_dashboard_create_issue", _dashboard_create_issue)
+        self.register_function("_dashboard_review_issues", _dashboard_review_issues)
