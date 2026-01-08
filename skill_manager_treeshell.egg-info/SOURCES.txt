@@ -11,6 +11,7 @@ configs/dev_base_zone_config.json
 configs/dev_user_config.json
 configs/dev_user_shortcuts.json
 configs/dev_user_zone_config.json
+configs/nav_config.json
 configs/system_agent_config.json
 configs/system_agent_shortcuts.json
 configs/system_agent_zone_config.json
@@ -21,6 +22,7 @@ configs/system_user_config.json
 configs/system_user_shortcuts.json
 configs/system_user_zone_config.json
 configs/families/system_family.json
+configs/families/system_meta_family.json
 skill_manager_treeshell.egg-info/PKG-INFO
 skill_manager_treeshell.egg-info/SOURCES.txt
 skill_manager_treeshell.egg-info/dependency_links.txt
