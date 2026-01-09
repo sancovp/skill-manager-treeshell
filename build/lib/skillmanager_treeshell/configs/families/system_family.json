@@ -29,7 +29,8 @@
         "17": "create_persona",
         "18": "equip_persona",
         "19": "get_active_persona",
-        "20": "deactivate_persona"
+        "20": "deactivate_persona",
+        "21": "list_quarantine"
       }
     },
     "list_skills": {
@@ -288,6 +289,17 @@
       "import_path": "skill_manager.treeshell_functions",
       "import_object": "deactivate_persona",
       "function_name": "deactivate_persona",
+      "is_async": false,
+      "args_schema": {}
+    },
+    "list_quarantine": {
+      "type": "Callable",
+      "prompt": "List Quarantine",
+      "description": "List all quarantined skills (duplicates detected during sync).",
+      "signature": "list_quarantine() -> str",
+      "import_path": "skill_manager.treeshell_functions",
+      "import_object": "list_quarantine",
+      "function_name": "list_quarantine",
       "is_async": false,
       "args_schema": {}
     }

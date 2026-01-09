@@ -12,26 +12,43 @@ from mcp.server.stdio import stdio_server
 from mcp.types import Tool, TextContent
 from mcp.shared.exceptions import McpError
 
-from custom_treeshell import CustomTreeshellAgentTreeShell
+from skillmanager_treeshell import SkillManagerTreeShell
 
 
 class TreeShellTools(str, Enum):
     RUN_CONVERSATION_SHELL = "run_conversation_shell"
 
 
-class CustomTreeshellAgentMCPServer:
-    """MCP Server for CustomTreeshell AgentTreeShell (restricted)"""
-    
+class SkillManagerTreeshellAgentMCPServer:
+    """MCP Server for Skill Manager TreeShell"""
+
     def __init__(self):
         self.shell = None
-    
+
+    def _find_user_config(self, heaven_data_dir: str, library_prefix: str) -> str:
+        """Find user config directory for this library in HEAVEN_DATA_DIR."""
+        try:
+            if not os.path.exists(heaven_data_dir):
+                return None
+            for item in os.listdir(heaven_data_dir):
+                if item.startswith(library_prefix):
+                    item_path = os.path.join(heaven_data_dir, item)
+                    if os.path.isdir(item_path):
+                        configs_path = os.path.join(item_path, 'configs')
+                        if os.path.exists(configs_path):
+                            return configs_path
+            return None
+        except Exception:
+            return None
+
     async def run_conversation_shell(self, command: str) -> dict:
         if not self.shell:
             try:
-                if not os.getenv("HEAVEN_DATA_DIR"):
-                    os.environ["HEAVEN_DATA_DIR"] = "/tmp/heaven_data"
-                    os.makedirs("/tmp/heaven_data", exist_ok=True)
-                self.shell = CustomTreeshellAgentTreeShell()
+                heaven_data = os.getenv("HEAVEN_DATA_DIR", "/tmp/heaven_data")
+                os.environ["HEAVEN_DATA_DIR"] = heaven_data
+                os.makedirs(heaven_data, exist_ok=True)
+                user_config_path = self._find_user_config(heaven_data, "skillmanager_treeshell")
+                self.shell = SkillManagerTreeShell(user_config_path=user_config_path)
             except Exception as e:
                 return {"success": False, "error": f"Shell failed to initialize: {e}"}
         
@@ -43,8 +60,8 @@ class CustomTreeshellAgentMCPServer:
 
 
 async def serve() -> None:
-    server = Server("custom_treeshell-agent-shell")
-    shell_server = CustomTreeshellAgentMCPServer()
+    server = Server("skillmanager_treeshell-agent-shell")
+    shell_server = SkillManagerTreeshellAgentMCPServer()
     
     @server.list_tools()
     async def list_tools() -> list[Tool]:

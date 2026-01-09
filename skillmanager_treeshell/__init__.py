@@ -13,7 +13,7 @@ class SkillManagerConfigLoader(SystemConfigLoader):
 
     def _get_library_configs_dir(self) -> str:
         """Override to use this library's configs instead of heaven-tree-repl's."""
-        library_root = Path(__file__).parent.parent
+        library_root = Path(__file__).parent
         return str(library_root / "configs")
 
 
